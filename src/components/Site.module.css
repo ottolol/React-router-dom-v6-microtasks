@@ -16,7 +16,22 @@
     width: 30%;
     color:#282c34;
     font-size: 30px;
+    margin: 0 0 0 10px;
 
+    & > a {
+        display: block;
+        color: #1e3786;
+    }
+
+    & > a.active {
+        text-decoration: none;
+        color: #d0cbdf;
+    }
+
+    & > a:hover {
+        color: rgba(70, 131, 180, 0.356);
+        text-decoration: none;
+    }
 }
 
 .content{
