@@ -44,12 +44,12 @@ export const Prices = (props: Props) => {
         let filtered = filteredSneakers.filter(s => s.onSale );
         setFilteredSneakers(filtered);
         setSearchParams({onSale: 'true'})
-    }
+    };
 
     function handleReset() {
         setFilteredSneakers(sneakers);
         setSearchParams({})
-    }
+    };
 
     useEffect(() => {
         if (searchParams.get('onSale') === 'true') {
@@ -58,7 +58,7 @@ export const Prices = (props: Props) => {
         } else {
             setFilteredSneakers(sneakers);
         }
-    },[searchParams])
+    },[searchParams]);
 
     return (
         <div>
