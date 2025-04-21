@@ -5,12 +5,14 @@ import { Abibas } from "./components/pages/Abibas";
 import styles from "./components/Site.module.css";
 import { Error404 } from "./components/pages/Error404";
 import { Model } from "./components/pages/Model";
+import { Prices } from "./components/pages/Prices";
 
 export const PATH = {
   PAGE1: "/adidas",
   PAGE2: "/puma",
   PAGE3: "/abibas",
   PAGE4: "/:brand/:id",
+  PAGE5: "/prices",
   ERROR: "/page/error",
 } as const 
 // as const пишем, чтобы нельзя было переопределить в коде новые имена страниц
@@ -26,6 +28,7 @@ function App() {
           <NavLink to={PATH.PAGE1} className={({ isActive }) => (isActive ? styles.active : "")}>Adidas</NavLink>
           <NavLink to={PATH.PAGE2} className={({ isActive }) => (isActive ? styles.active : "")}>Puma</NavLink>
           <NavLink to={PATH.PAGE3} className={({ isActive }) => (isActive ? styles.active : "")}>Abibas</NavLink>
+          <NavLink to={PATH.PAGE5} className={({ isActive }) => (isActive ? styles.active : "")}>Цены для оптовиков</NavLink>
 
           {/* <div><NavLink to={"/page3"} className={({ isActive }) => isActive ? "activeNavLink" : "navLink"}>Page3</NavLink></div> */}
         </div>
@@ -36,6 +39,7 @@ function App() {
             <Route path={PATH.PAGE1} element={<Adidas />} />
             <Route path={PATH.PAGE2} element={<Puma />} />
             <Route path={PATH.PAGE3} element={<Abibas />} />
+            <Route path={PATH.PAGE5} element={<Prices />} />
 
             <Route path={PATH.PAGE4} element={<Model />} />
             
