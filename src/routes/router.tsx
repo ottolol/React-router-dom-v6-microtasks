@@ -12,21 +12,25 @@ import { Adidas } from "../components/pages/Adidas";
 import { Puma } from "../components/pages/Puma";
 import { Abibas } from "../components/pages/Abibas";
 import { Prices } from "../components/pages/Prices";
+import { Model } from "../components/pages/Model";
+import { ProtectedPage } from "../components/pages/ProtectedPage";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export const PATH = {
   ADIDAS: "/adidas",
   PUMA: "/puma",
   ABIBAS: "/abibas",
   PRICES: "/prices",
-  ERROR: "/page/error",
+  ERROR: "/error",
   MODEL: "/:brand/:id",
+  ADMIN: "/admin"
 } as const 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error404 />,
+    //errorElement: <Error404 />,
     children: [
       {
         path: PATH.ADIDAS,
@@ -43,9 +47,25 @@ export const router = createBrowserRouter([
       {
         path: PATH.PRICES,
         element: <Prices />,
-      }
+      }, 
+      {
+        path: PATH.MODEL,
+        element: <Model />,
+      }, 
+      {
+        path: PATH.ADMIN,
+        element: (
+          <ProtectedRoute>
+            <ProtectedPage />
+          </ProtectedRoute>
+        ),
+      }, 
+      {
+        path: "*",
+        element: <Error404 />,
+      },
     ]
-  }, 
+  },
   {
     path: "about",
     element: <div>About - Page</div>,
