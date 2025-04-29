@@ -1,4 +1,4 @@
-import { Navigate, NavLink, Route, Routes } from "react-router-dom";
+import { Navigate, NavLink, Outlet, Route, Routes } from "react-router-dom";
 import { Adidas } from "./components/pages/Adidas";
 import { Puma } from "./components/pages/Puma";
 import { Abibas } from "./components/pages/Abibas";
@@ -33,7 +33,9 @@ function App() {
           {/* <div><NavLink to={"/page3"} className={({ isActive }) => isActive ? "activeNavLink" : "navLink"}>Page3</NavLink></div> */}
         </div>
         <div className={styles.content}>
-          <Routes>
+          // Outlet служит для визуализации children из router.tsx
+          <Outlet />
+          {/* <Routes>
             <Route path="/" element={<Navigate to={PATH.PAGE1} />} />
 
             <Route path={PATH.PAGE1} element={<Adidas />} />
@@ -43,11 +45,11 @@ function App() {
 
             <Route path={PATH.PAGE4} element={<Model />} />
             
-            {/* <Route path={PATH.ERROR} element={<Error404 />} />
-            <Route path="/*" element={<Navigate to={PATH.ERROR} />} /> */}
+            <Route path={PATH.ERROR} element={<Error404 />} />
+            <Route path="/*" element={<Navigate to={PATH.ERROR} />} />
             
             <Route path="/*" element={<Error404 />} />
-          </Routes>
+          </Routes> */}
         </div>
       </div>
       <div className={styles.footer}>abibas 2025</div>
