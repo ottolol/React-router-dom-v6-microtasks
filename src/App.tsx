@@ -1,4 +1,4 @@
-import { Navigate, NavLink, Outlet, Route, Routes } from "react-router-dom";
+import { Navigate, NavLink, Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { Adidas } from "./components/pages/Adidas";
 import { Puma } from "./components/pages/Puma";
 import { Abibas } from "./components/pages/Abibas";
@@ -17,6 +17,10 @@ export const PATH = {
 // as const пишем, чтобы нельзя было переопределить в коде новые имена страниц
 
 function App() {
+  const navigate = useNavigate();
+  const navigateHandler = () => {
+    navigate(-1)
+ }
   return (
     <div>
       <div className={styles.header}>
@@ -33,6 +37,10 @@ function App() {
           {/* <div><NavLink to={"/page3"} className={({ isActive }) => isActive ? "activeNavLink" : "navLink"}>Page3</NavLink></div> */}
         </div>
         <div className={styles.content}>
+          <div className={styles.HorizontalNavigation}>
+            <NavLink className={styles.LinkLikeButton} to={PATH.PAGE1} >Главная</NavLink>
+            <button className={styles.ButtonLikeLink} onClick={navigateHandler}>Назад</button>
+          </div>
           {/* Outlet служит для визуализации children из router.tsx */}
           <Outlet />
           {/* <Routes>

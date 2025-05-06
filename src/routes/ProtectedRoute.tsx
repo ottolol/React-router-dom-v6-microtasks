@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { PATH } from './router';
 
 type ProtectedRouteProps = {
@@ -10,8 +10,9 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const [isAuthenticated] = useState<Boolean>(false);
 
   if (!isAuthenticated) {
-    return <Navigate to={PATH.ERROR} replace />;
+    return <Navigate to={PATH.LOGIN} replace />;
   }
 
-  return children;
+  // return <Outlet />;
+  return <>{children}</>;
 };
